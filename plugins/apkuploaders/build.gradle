@@ -1,0 +1,33 @@
+apply plugin:'groovy'
+apply plugin:'maven'
+
+group 'com.catpaw'
+version '1.0.0'
+
+dependencies{
+    compile localGroovy()
+    compile gradleApi()
+
+    compile 'org.json:json:20090211'
+    compile 'com.squareup.okhttp:okhttp:2.2.0'
+    compile 'commons-lang:commons-lang:2.6'
+    runtime 'com.squareup.okhttp:okhttp:2.2.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
+}
+
+repositories{
+    mavenCentral()
+}
+
+uploadArchives{
+    repositories{
+        mavenDeployer{
+            repository(url:uri(localMavenRepositories()))
+        }
+    }
+}
+
+def localMavenRepositories(){
+  return '/Users/congtaowang/Public/Apps/SDK/extras/catpaw/plugins/repo/'
+}
